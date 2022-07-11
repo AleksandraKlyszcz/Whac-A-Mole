@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State, timeLeft } from './state';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Whac-A-Mole';
+  timeLeft$ = this.store.select(timeLeft);
+  constructor(private readonly store: Store<State>) { }
 }

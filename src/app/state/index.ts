@@ -6,7 +6,13 @@ export interface State {
 }
 
 export const gameState = (state: State) => state.game;
+
 export const roundIsActive = createSelector(
     gameState,
     (state: GameState) => state.roundIsActive
+);
+
+export const timeLeft = createSelector(
+    gameState,
+    (state: GameState) => state.timeLeft
 );

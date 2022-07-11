@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { roundIsActive, State } from '../state';
-import { startGame } from '../state/game.actions';
+import { GameService } from '../game.service';
+import { roundIsActive, State, timeLeft } from '../state';
+import { startGame, timesUp } from '../state/game.actions';
 import { Hole } from './hole/hole';
 
 @Component({
