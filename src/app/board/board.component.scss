@@ -1,0 +1,14 @@
+:host {
+    background-color: lightgrey;
+    border: 1px solid grey;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 600px;
+
+
+    .start-button {
+        display: block;
+        margin: auto;
+    }
+}
