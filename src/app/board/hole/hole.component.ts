@@ -1,20 +1,23 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-hole',
   templateUrl: './hole.component.html',
   styleUrls: ['./hole.component.scss']
 })
-export class HoleComponent implements OnInit {
+export class HoleComponent {
 
   @Input() holeID: number;
 
   @HostBinding('class.mole')
   @Input() moleOut: boolean;
 
-  constructor() { }
+  @Output() holeClicked = new EventEmitter<{holeID: number}>();
 
-  ngOnInit(): void {
+
+  @HostListener('click')
+  click(): void {
+    this.holeClicked.emit({holeID: this.holeID});
   }
 
 }
