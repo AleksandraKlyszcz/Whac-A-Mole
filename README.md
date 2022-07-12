@@ -1,14 +1,17 @@
 # WhacAMole
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+The trial version of an arcade game which comes from Japan.
+
+## How to run application locally
+- Clone repository "git clone <repo_url>"
+- Go to cloned repository to "/src/" (where package.json is located)
+- Run "npm i" and wait for it to finish
+- Run "npm start" wait for it to finish
+- Go to "http://localhost:4200/" URL in the browser
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
