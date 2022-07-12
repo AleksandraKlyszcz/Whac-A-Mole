@@ -27,3 +27,7 @@ export const score = createAction(
     'Score',
     props<{ value: number }>()
 );
+
+export const resetGame = createAction(
+    'Reset Game'
+);

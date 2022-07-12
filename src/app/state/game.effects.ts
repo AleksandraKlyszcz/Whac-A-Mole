@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, exhaustMap, filter, tap, takeUntil } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { GameService } from '../game.service';
-import { holeClicked, molesOut, score, startGame, timeLeft, timesUp } from './game.actions';
+import { holeClicked, molesOut, resetGame, score, startGame, timeLeft, timesUp } from './game.actions';
 
 @Injectable()
 export class GameEffects {
@@ -61,13 +61,19 @@ export class GameEffects {
         )
     );
 
-
     holeClicked$ = createEffect(() => this.actions$.pipe(
             ofType(holeClicked),
             map(action => action.holeID),
             tap((holeID: number) => this.gameService.holeClicked(holeID)),
         ),
         { dispatch: false },
+    );
+
+    timesUp$ = createEffect(() => this.actions$.pipe(
+            ofType(timesUp),
+            tap(() => this.gameService.resetGame()),
+            map(action => resetGame()),
+        ),
     );
 
     constructor(

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, EMPTY, filter, interval, Observable, Subscription, take, takeWhile, tap } from 'rxjs';
+import { BehaviorSubject, filter, interval, Observable, Subscription, takeWhile, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -24,7 +24,6 @@ export class GameService {
 
     this.molesOut$ = seconds.pipe(
         tap(() => this.showMole()),
-        tap(() => console.log('molesOut: ', this.molesOut)),
         map(() => this.molesOut)
     );
 
@@ -34,6 +33,13 @@ export class GameService {
     if(this.molesOut.includes(hole)) {
       this.whackMole(hole);
     }
+  }
+
+  resetGame() {
+    this.molesOut = [];
+    this.molesTimers.forEach(timer => timer.unsubscribe());
+    this.molesTimers.fill(null);
+    this.scoreSubject$.next(0);
   }
 
   private showMole() {
@@ -70,8 +76,6 @@ export class GameService {
   private getRandomHole(): number {
     return this.holes[Math.floor(Math.random() * this.holes.length)]
   }
-
-
 
 }
 

@@ -26,3 +26,8 @@ export const score = createSelector(
     gameState,
     (state: GameState) => state.score
 );
+
+export const highestScore = createSelector(
+    gameState,
+    (state: GameState) => state.highestScore
+);

@@ -20,6 +20,7 @@ export class BoardComponent {
 
   startButtonClicked(): void {
     this.store.dispatch(startGame());
+    this.buttonText = 'Try again!';
   }
 
   holeClicked(hole: {holeID: number}){

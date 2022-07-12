@@ -1,19 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
 import { Hole } from '../board/hole/hole';
-import { molesOut, score, startGame, timeLeft, timesUp } from './game.actions';
+import { molesOut, resetGame, score, startGame, timeLeft, timesUp } from './game.actions';
 
 export interface GameState {
     roundIsActive: boolean;
     timeLeft: number;
     holes: Hole[];
     score: number;
+    highestScore: number;
 }
 
 export const initialState: GameState = {
     roundIsActive: false,
     timeLeft: 30,
     holes: Array.from(Array(6), (_, i) => ({id: i+1, moleOut: false})),
-    score: 0
+    score: 0,
+    highestScore: 0
 };
 
 export const gameReducer = createReducer(
@@ -25,7 +27,8 @@ export const gameReducer = createReducer(
     on(timesUp, (state) => ({
         ...state,
         roundIsActive: false,
-        timeLeft: 30
+        timeLeft: 30,
+        highestScore: state.score > state.highestScore ? state.score : state.highestScore
     })),
     on(timeLeft, (state, {value}) => ({
         ...state,
@@ -37,6 +40,10 @@ export const gameReducer = createReducer(
     })),
     on(score, (state, {value}) => ({
         ...state,
-        score: value
-    }))
+        score: value,
+    })),
+    on(resetGame, (state) => ({
+        ...initialState,
+        highestScore: state.highestScore
+    })),
 );

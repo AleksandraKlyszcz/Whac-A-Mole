@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { score, State, timeLeft } from './state';
+import { highestScore, score, State, timeLeft } from './state';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ import { score, State, timeLeft } from './state';
 export class AppComponent {
   timeLeft$ = this.store.select(timeLeft);
   score$ = this.store.select(score);
+  highestScore$ = this.store.select(highestScore);
 
   constructor(private readonly store: Store<State>) { }
 }
