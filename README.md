@@ -4,7 +4,7 @@ The trial version of an arcade game which comes from Japan.
 
 ## How to run application locally
 - Clone repository "git clone <repo_url>"
-- Go to cloned repository to "/src/" (where package.json is located)
+- Go to cloned repository (where package.json is located)
 - Run "npm i" and wait for it to finish
 - Run "npm start" wait for it to finish
 - Go to "http://localhost:4200/" URL in the browser
