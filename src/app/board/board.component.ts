@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { GameService } from '../game.service';
-import { roundIsActive, State, timeLeft } from '../state';
-import { startGame, timesUp } from '../state/game.actions';
+import { Observable } from 'rxjs';
+import { holes, roundIsActive, State } from '../state';
+import { holeClicked, startGame } from '../state/game.actions';
 import { Hole } from './hole/hole';
 
 @Component({
@@ -10,22 +10,20 @@ import { Hole } from './hole/hole';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
 
   buttonText = 'Start';
   roundIsActive$ = this.store.select(roundIsActive);
+  holes$: Observable<Hole[]> = this.store.select(holes);
 
-  holes: Hole[] = [];
   constructor(private readonly store: Store<State>) { }
-
-  ngOnInit(): void {
-    for (let i = 0; i < 6; ++i) {
-      this.holes.push({id: i+1});
-    }
-  }
 
   startButtonClicked(): void {
     this.store.dispatch(startGame());
+  }
+
+  holeClicked(hole: {holeID: number}){
+    this.store.dispatch(holeClicked({ holeID: hole.holeID }));
   }
 
 }

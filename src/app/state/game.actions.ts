@@ -12,3 +12,18 @@ export const timeLeft = createAction(
 export const timesUp = createAction(
     'Time\'s Up'
 );
+
+export const holeClicked = createAction(
+    'Hole Clicked',
+    props<{ holeID: number }>()
+);
+
+export const molesOut = createAction(
+    'Moles Out',
+    props<{ values: number[] }>()
+);
+
+export const score = createAction(
+    'Score',
+    props<{ value: number }>()
+);

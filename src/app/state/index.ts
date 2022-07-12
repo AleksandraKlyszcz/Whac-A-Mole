@@ -16,3 +16,13 @@ export const timeLeft = createSelector(
     gameState,
     (state: GameState) => state.timeLeft
 );
+
+export const holes = createSelector(
+    gameState,
+    (state: GameState) => state.holes
+);
+
+export const score = createSelector(
+    gameState,
+    (state: GameState) => state.score
+);

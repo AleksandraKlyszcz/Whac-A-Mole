@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State, timeLeft } from './state';
+import { score, State, timeLeft } from './state';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,7 @@ import { State, timeLeft } from './state';
 })
 export class AppComponent {
   timeLeft$ = this.store.select(timeLeft);
+  score$ = this.store.select(score);
+
   constructor(private readonly store: Store<State>) { }
 }
