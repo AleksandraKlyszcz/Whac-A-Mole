@@ -1,7 +1,8 @@
 <ng-container *ngIf="{roundIsActive: roundIsActive$ | async} as state">
-    <button *ngIf="!state.roundIsActive" class="start-button" (click)="startButtonClicked()">{{buttonText}}</button>
-
-    <ng-container *ngFor="let hole of holes$ | async">
+    <div *ngIf="!state.roundIsActive"  class="start-button">
+        <button (click)="startButtonClicked()">{{buttonText}}</button>
+    </div>
+    <div *ngFor="let hole of holes$ | async" class="hole">
         <app-hole *ngIf="state.roundIsActive" [holeID]="hole.id" [moleOut]="hole.moleOut" (holeClicked)="holeClicked($event)"></app-hole>
-    </ng-container>
+    </div>
 </ng-container>
